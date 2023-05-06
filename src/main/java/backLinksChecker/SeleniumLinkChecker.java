@@ -19,7 +19,7 @@ public class SeleniumLinkChecker {
 	 public SeleniumLinkChecker() { //конструктор класса инициализирующий объект
 	        System.setProperty("webdriver.gecko.driver", "F:\\FireFox\\geckodriver.exe");
 	        FirefoxBinary firefoxBinary = new FirefoxBinary();
-	        firefoxBinary.setExecutable(new File("F:\\FireFox\\firefox.exe")); //указываем путь к Firefox браузеру
+	        firefoxBinary.setFile(new File("F:\\FireFox\\firefox.exe")); //указываем путь к Firefox браузеру
 	        FirefoxOptions firefoxOptions = new FirefoxOptions();
 	        firefoxOptions.setBinary(firefoxBinary);
 	        this.driver = new FirefoxDriver(); //сохраняем его в переменной
