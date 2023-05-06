@@ -11,7 +11,7 @@ public class SeleniumLinkChecker {
 	private WebDriver driver;
 
 	 public SeleniumLinkChecker() { //конструктор класса инициализирующий объект
-	        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Google\\Chrome\\Application");
+	        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe");
 	        this.driver = new ChromeDriver(); //сохраняем его в переменной
 	    }
 

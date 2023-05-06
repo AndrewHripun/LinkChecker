@@ -3,6 +3,7 @@
   <groupId>AndrewHripun</groupId>
   <artifactId>backLinksChecker</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
  
   <dependencies>
   <dependency>
@@ -21,6 +22,11 @@
         <artifactId>selenium-chrome-driver</artifactId>
         <version>4.1.0</version>
     </dependency>
+    
+
+
+
+
 </dependencies>
 
 

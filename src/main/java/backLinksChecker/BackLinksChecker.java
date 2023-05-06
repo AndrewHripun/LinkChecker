@@ -22,10 +22,10 @@ public class BackLinksChecker {
 		ArrayList<String> cannotUseLinksContainList = new ArrayList<String>(); //не удалось получить доступ к сайту
 		ArrayList<String> errorLinksContainList = new ArrayList<String>(); //Произошла неизвестная ошибка
 		
-		SeleniumLinkChecker seleniumChecker = new SeleniumLinkChecker(); //Экземляр класса SeleniumLinkChecker
+		 SeleniumLinkChecker seleniumChecker = new SeleniumLinkChecker(); //Экземляр класса SeleniumLinkChecker
 		
-		String seleniumLink = ""; //ссылка которую ищем
-		String seleniumPage = ""; //страничка которую проверяем
+		 String seleniumLink = ""; //ссылка которую ищем
+		 String seleniumPage = ""; //страничка которую проверяем
 			
 		
 		//Считывание ссылок сайтов которые парсим, считывание ссылок в столбик.
@@ -102,9 +102,9 @@ public class BackLinksChecker {
 	            } else if (errorMessage.contains("timeout")) {
 	                //System.out.println("Не удалось установить соединение с сайтом " + url + ". Время ожидания истекло.");
 	            	timeoutContainList.add(url);
-	            } else {
-	                //System.out.println("Не удалось получить доступ к " + url + ": " + e.getMessage());
-	                cannotUseLinksContainList.add(url);
+	            }  else {
+//	                System.out.println("Не удалось получить доступ к " + url + ": " + e.getMessage());
+                cannotUseLinksContainList.add(url);
 	            }
 	            continue;
 	        } catch (IllegalArgumentException e) {
