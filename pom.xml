@@ -3,6 +3,7 @@
   <groupId>AndrewHripun</groupId>
   <artifactId>backLinksChecker</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
  
   <dependencies>
   <dependency>
@@ -16,11 +17,17 @@
         <artifactId>selenium-java</artifactId>
         <version>4.1.0</version>
     </dependency>
-    <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-chrome-driver</artifactId>
-        <version>4.1.0</version>
-    </dependency>
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-firefox-driver</artifactId>
+    <version>4.1.0</version>
+</dependency>
+
+    
+
+
+
+
 </dependencies>
 
 
