@@ -2,36 +2,62 @@ package backLinksChecker;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.TimeoutException;
+import java.time.Duration;
+import java.io.File;
+
 
 import java.util.List;
 
 public class SeleniumLinkChecker {
-	private WebDriver driver;
+    private WebDriver driver;
 
-	 public SeleniumLinkChecker() { //конструктор класса инициализирующий объект
-	        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Google\\Chrome\\Application");
-	        this.driver = new ChromeDriver(); //сохраняем его в переменной
-	    }
+    public SeleniumLinkChecker() { //конструктор класса инициализирующий объект
+        System.setProperty("webdriver.gecko.driver", "F:\\FireFox\\geckodriver.exe");
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.setBinary(new FirefoxBinary(new File("F:\\FireFox\\firefox.exe"))); //указываем путь к Firefox браузеру
+        this.driver = new FirefoxDriver(firefoxOptions); //сохраняем его в переменной
+    }
+    
+    
+  public void checkLink(String link, String url) { //метод которым проверяем ссылки переходя по урлам. link мы открываем, а url мы ищем
+  this.driver.get(link); //драйвером открываем ссылки
+  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //Запускаем драйвер давая 10 секунд для поиска на 1 страницу
+  
+  
+    try {
+    	wait.until (ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@href='" + url + "']")));
+    	String status = url + " is valid";
+    	System.out.println(status);
+    } catch (TimeoutException e) {
+    	String status = url + " is broken";
+        System.out.println(status);
+    }
+  }
+  
+//  List<WebElement> links = this.driver.findElements(By.xpath("//a[@href]")); //ищем ссылки
+//  for (WebElement elem : links) { //перебор всех найденных ссылок и поиск совпадений с задаными ссылками
+//      if (elem.getAttribute("href").equals(url)) {
+//          String status = elem.getAttribute("href") + " is valid";
+//          System.out.println(status);
+//          return;
+//      }
+//  }
+  
+//  String status = url + " is broken";
+//  System.out.println(status);
+//}
 
-	    public void checkLink(String link, String url) { //метод которым проверяем ссылки переходя по урлам
-	        this.driver.get(link); //драйвером открываем ссылки
-	        List<WebElement> links = this.driver.findElements(By.xpath("//a[@href]")); //ищем ссылки
-	        for (WebElement elem : links) { //перебор всех найденных ссылок и поиск совпадений с задаными ссылками
-	            if (elem.getAttribute("href").equals(url)) {
-	                String status = elem.getAttribute("href") + " is valid";
-	                System.out.println(status);
-	                return;
-	            }
-	        }
-	        String status = url + " is broken";
-	        System.out.println(status);
-	    }
-
-	    public void checkLinks(List<String> links, String url) {
-	        for (String link : links) {
-	            checkLink(link, url);
-	        }
-	    }
-	}
+    public void checkLinks(List<String> links, String url) {
+        for (String link : links) {
+            checkLink(link, url);
+        }
+        this.driver.quit(); //закрываем драйвер после проверки ссылок
+    }
+}
